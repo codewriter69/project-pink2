@@ -1,0 +1,150 @@
+/* Base styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 90%; /* Make the container responsive */
+    max-width: 400px; /* Limit maximum size */
+    margin: 50px auto; /* Center the container */
+    padding: 20px;
+    background-color: pink;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+/* Hearts background */
+body {
+    background-color: #ffe0e0; /* Light pink background for the body */
+    background-image: url('heart-pattern.png'); /* Use a heart background image */
+    background-size: 30px 30px;
+    background-repeat: repeat;
+    background-position: center;
+}
+
+/* Floating hearts animation */
+@keyframes floatHearts {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-300px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.hearts-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.heart-background {
+    position: absolute;
+    top: 100%;
+    animation: floatHearts 5s infinite linear;
+    font-size: 2em;
+    color: red;
+}
+
+.heart-background:nth-child(even) {
+    animation-duration: 6s;
+    animation-delay: -1s;
+}
+
+.heart-background:nth-child(odd) {
+    animation-duration: 7s;
+    animation-delay: -2s;
+}
+
+/* Buttons styling */
+button {
+    width: 80%; /* Make buttons wider for mobile */
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: #ff66b2; /* Pink button */
+    color: white;
+}
+
+button.yes-button {
+    background-color: #ff6666; /* Light red for 'YES' */
+}
+
+button.no-button {
+    background-color: #ff4d4d; /* Slightly darker red for 'NO' */
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* Fireworks / Hearts animation container */
+.fireworks-container, .hearts-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+}
+
+.heart {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    position: absolute;
+    animation: heart-fall 2s ease-in-out forwards;
+}
+
+@keyframes heart-fall {
+    0% {
+        transform: scale(1) translateY(0);
+    }
+    100% {
+        transform: scale(2) translateY(100px); /* Adjust the falling distance */
+    }
+}
+
+/* Video container styling */
+.video-container iframe {
+    width: 100%; /* Make video responsive */
+    height: 200px; /* Adjust height */
+    border: none;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+        margin-top: 30px;
+    }
+
+    /* Buttons should be more compact on mobile */
+    button {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .video-container iframe {
+        height: 180px; /* Reduced height for mobile */
+    }
+
+    /* Optional: Reduce the size of the hearts if needed */
+    .heart {
+        width: 15px;
+        height: 15px;
+    }
+}
