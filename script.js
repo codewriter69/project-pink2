@@ -8,36 +8,36 @@ inputElement.addEventListener('keypress', (e) => {
         inputVal = (e.target.value).toLowerCase();
 
         if (inputVal === 'corny' || inputVal === 'korny') {
-            prompter.remove(); 
-            
+            prompter.remove();
+
             const questionAsker = document.createElement('div');
             questionAsker.classList.add('question-asker');
-                
+
             const question = document.createElement('p')
             question.classList.add('question')
             question.textContent = 'Will you be my Valentine?'
-    
+
             const buttonsDiv = document.createElement('div')
             buttonsDiv.classList.add('buttons')
-    
+
             const yesButton = document.createElement('button')
             yesButton.classList.add('yes-button')
             yesButton.textContent = 'YES ❤️'
-    
-            let noButton = document.createElement('button')
+
+            const noButton = document.createElement('button')
             noButton.classList.add('no-button')
-            noButton.textContent = 'NO 💔'        
-    
+            noButton.textContent = 'NO 💔'
+
             buttonsDiv.append(yesButton, noButton)
-    
+
             questionAsker.append(question, buttonsDiv)
-    
+
             container.appendChild(questionAsker)
 
             yesButton.addEventListener('click', () => {
                 // Clear existing content
                 container.innerHTML = '';
-            
+
                 // Create hearts container
                 const heartsContainer = document.createElement('div');
                 heartsContainer.classList.add('hearts-container');
@@ -55,15 +55,15 @@ inputElement.addEventListener('keypress', (e) => {
                 // After 2 seconds, remove hearts and play the video
                 setTimeout(() => {
                     heartsContainer.remove(); // Remove hearts animation
-            
+
                     // Create a video container
                     const videoContainer = document.createElement('div');
                     videoContainer.classList.add('video-container');
 
                     // Embed the YouTube video
                     videoContainer.innerHTML = `
-                    <iframe width="560" height="315" 
-                        src="https://www.youtube.com/embed/Ly85du4fmZY?autoplay=1&rel=0" 
+                    <iframe width="560" height="315"
+                        src="https://www.youtube.com/embed/Ly85du4fmZY?autoplay=1&rel=0"
                         frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
                     </iframe>`;
 
@@ -78,16 +78,17 @@ inputElement.addEventListener('keypress', (e) => {
 
                 if (noClickCount === 1) {
                     alert("You must have accidentally pressed No. Try again.");
-                } 
+                }
                 else if (noClickCount === 2) {
                     alert("You must have sneezed. Try again.");
-                    
+
                     // Flip Yes and No button positions
                     buttonsDiv.insertBefore(noButton, yesButton);
-                } 
+                }
                 else if (noClickCount === 3) {
                     // Change both buttons to "YES ❤️"
-                    noButton = yesButton;
+                    noButton.textContent = "YES ❤️";
+                    yesButton.textContent = "YES ❤️";
                 }
             });
 
